@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block title %}سجل الفحوصات{% endblock %}
+{% block main %}
+<h3 class="mb-4">سجل عمليات الفحص السابقة</h3>
+
+<table class="table table-striped table-bordered bg-white shadow-sm">
+    <thead class="table-dark">
+        <tr>
+            <th>معرف الفحص</th>
+            <th>الرابط المستهدف</th>
+            <th>تاريخ ووقت الفحص</th>
+            <th>الحالة</th>
+            <th>الإجراء</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for s in scans %}
+        <tr>
+            <td>{{ s.id }}</td>
+            <td>{{ s.url }}</td>
+            <td>{{ s.timestamp }}</td>
+            <td><span class="badge bg-success">{{ s.status }}</span></td>
+            <td><a href="{{ url_for('dashboard', scan_id=s.id) }}" class="btn btn-sm btn-info">عرض النتائج</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

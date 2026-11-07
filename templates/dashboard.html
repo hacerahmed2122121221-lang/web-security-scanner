@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block title %}لوحة التحكم{% endblock %}
+{% block main %}
+<h3 class="mb-3">نتائج الفحص للرابط: <span class="text-primary">{{ scan.url }}</span></h3>
+<p class="text-muted">تاريخ الفحص: {{ scan.timestamp }}</p>
+
+<table class="table table-striped table-bordered mt-4 bg-white shadow-sm">
+    <thead class="table-dark">
+        <tr>
+            <th>مستوى الخطورة</th>
+            <th>العنوان</th>
+            <th>الوصف</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for f in findings %}
+        <tr>
+            <td><span class="badge bg-warning text-dark">{{ f.severity }}</span></td>
+            <td>{{ f.title }}</td>
+            <td>{{ f.description }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{{ url_for('index') }}" class="btn btn-secondary mt-3">إجراء فحص جديد</a>
+{% endblock %}

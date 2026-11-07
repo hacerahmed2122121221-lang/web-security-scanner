@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block title %}إدخال الرابط{% endblock %}
+{% block main %}
+<div class="row justify-content-center">
+    <div class="col-md-6 text-center">
+        <h2 class="mb-4">منصة فحص أمن الويب الآلية</h2>
+        <form action="/" method="POST" class="card p-4 shadow-sm">
+            <div class="mb-3">
+                <input type="url" name="url" class="form-control" placeholder="https://example.com" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">بدء الفحص الأمني</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
